@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<!--
+        Copyright 2024 Carlos Henrique <ch.carlosh.enr.ique2.112@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Additional Rules:
+
+1. You must retain the original copyright notice and license information when distributing the software or any modifications created from it.
+2. This software is provided "as is," without any warranties or conditions of any kind, either express or implied, including but not limited to the implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement.
+3. In no event shall the authors or copyright holders be held liable for any claims, damages, or other liabilities arising out of the use or inability to use the software.
+4. You are not allowed to use the name of the copyright holder for any endorsement or promotional purposes without prior written permission.
+5. Contributions to the software are welcome, but by submitting a contribution, you agree to license the contribution under the same license terms as the original software.
+
+Please refer to the full Apache License, Version 2.0 for the complete set of terms and conditions.
+-->
+<head>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://unpkg.com/openpgp"></script>
+    <title>OpenPGP Demo</title>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="images/logo.png" width="200">
+        <p>Made by pom<br>Logo & Visual by recoil999</p><br>
+        <button type="button" onclick="openPopup('generate')">Generate Key Pair</button>
+        <button type="button" onclick="openPopup('encrypt')">Encrypt Message</button>
+        <button type="button" onclick="openPopup('decrypt')">Decrypt Message</button>
+        <button type="button" onclick="openPopup('verify')">Verify Message</button>
+    </div>
+
+    <div id="output"><!-- The output exits through the console. --></div>
+
+    <div class="main">
+        <div id="generateSection" style="display: none;">
+            <h2>Generate Key Pair</h2>
+            <form>
+                <label for="generateName">Name:</label><br>
+                <input type="text" id="generateName" placeholder="Enter your name">
+                <br>
+                <label for="generateEmail">Email:</label><br>
+                <input type="email" id="generateEmail" placeholder="Enter your email">
+                <br>
+                <button type="button" onclick="createKeyPair()">Generate Key Pair</button>
+            </form>
+        </div>
+
+        <div id="encryptSection" style="display: none;">
+            <h2>Encrypt Message</h2>
+            <form>
+                <label for="encryptionPublicKey">Recipient's Public Key:</label><br>
+                <textarea id="encryptionPublicKey" rows="10" cols="50" placeholder="Enter the recipient's public key"></textarea>
+                <br>
+                <label for="encryptionMessage">Message:</label><br>
+                <textarea id="encryptionMessage" rows="10" cols="50" placeholder="Enter the message to encrypt"></textarea>
+                <br>
+                <button type="button" onclick="encryptMessage()">Encrypt Message</button>
+            </form>
+        </div>
+
+        <div id="decryptSection" style="display: none;">
+            <h2>Decrypt Message</h2>
+            <form>
+                <label for="decryptionPrivateKey">Private Key:</label><br>
+                <textarea id="decryptionPrivateKey" rows="10" cols="50" placeholder="Enter your private key"></textarea>
+                <br>
+                <label for="decryptionMessage">Encrypted Message:</label><br>
+                <textarea id="decryptionMessage" rows="10" cols="50" placeholder="Enter the encrypted message"></textarea>
+                <br>
+                <button type="button" onclick="decryptMessage()">Decrypt Message</button>
+            </form>
+        </div>
+
+        <div id="verifySection" style="display: none;">
+            <h2>Verify Message</h2>
+            <form>
+                <label for="verificationPublicKey">Signer's Public Key:</label><br>
+                <textarea id="verificationPublicKey" rows="10" cols="50" placeholder="Enter the signer's public key"></textarea>
+                <br>
+                <label for="verificationMessage">Message:</label><br>
+                <textarea id="verificationMessage" rows="10" cols="50" placeholder="Enter the message to verify"></textarea>
+                <br>
+                <label for="verificationSignature">Signature:</label><br>
+                <textarea id="verificationSignature" rows="10" cols="50" placeholder="Enter the signature"></textarea>
+                <br>
+                <button type="button" onclick="verifyMessage()">Verify Message</button>
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
