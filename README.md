@@ -1,5 +1,7 @@
 # OpenPGP Demo
 
+**NOT QUITE READY AND STILL NEEDS REPAIRS**
+
 This is a demo application that showcases the usage of the OpenPGP.js library for generating key pairs, encrypting and decrypting messages, and verifying message signatures using OpenPGP encryption.
 
 ## Usage
